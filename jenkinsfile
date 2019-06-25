@@ -16,13 +16,13 @@ pipeline{
 		steps
 		{
             script {
-                currentBuild.displayName = "$clarity_version-smoke"
+                currentBuild.displayName = "$clarity_version..$BUILD_NUMBER-smoke"
             }
         }
     }
         stage('1'){
             steps{
-            echo $Var1
+            echo "$Var1"
             //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
             }
         }
