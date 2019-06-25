@@ -1,0 +1,15 @@
+pipeline{
+    agent{
+        node{
+            label 'slave_node'
+            customWorkspace '/var/jenkins_workspace1'
+        }
+    }
+    stages{
+        stage('1'){
+            steps{
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
+            }
+        }
+    }
+}
