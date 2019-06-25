@@ -2,7 +2,7 @@ pipeline{
     agent{
         node{
             label 'slave_node'
-            customWorkspace '/var/jenkins_workspace1'
+            customWorkspace '/var/jenkins_workspace2'
         }
     }
     stages{
