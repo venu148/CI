@@ -6,7 +6,7 @@ pipeline{
         }
     }
     environment {
-        def props = readProperties  file: '1.prpoperties'
+        def props = readProperties  file: '/var/1.prpoperties'
         def Var1= "${props['name']}"
 	def clarity_version="${props['CLARITY_VERSION']}"
         }
