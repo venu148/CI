@@ -11,7 +11,7 @@ pipeline{
 	def clarity_version="${props['CLARITY_VERSION']}"
 	def MY_BRANCH="${props['MY-BRANCH']}"
 	def REL_DIR="${props['REL-DIR']}"
-	def GIT_URL1="${props['GIT-URL']}"
+	def GIT_URL="https://github.com/gabrielf/maven-samples.git"
         }
     stages{
         stage("Set_Build_No")
@@ -26,7 +26,7 @@ pipeline{
         stage('1'){
             steps{
             echo "$Var1"
-	    checkout([$class: 'GitSCM', branches: [[name: '$MY_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$REL_DIR']], submoduleCfg: [], userRemoteConfigs: [[url: '$GIT_URL1']]])
+	    checkout([$class: 'GitSCM', branches: [[name: '$MY_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$REL_DIR']], submoduleCfg: [], userRemoteConfigs: [[url: '$GIT_URL']]])
             //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
             }
         }
