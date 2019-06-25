@@ -26,7 +26,7 @@ pipeline{
         stage('1'){
             steps{
             echo "$Var1"
-	    checkout([$class: 'GitSCM', branches: [[name: '$MY-BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$REL-DIR']], submoduleCfg: [], userRemoteConfigs: [[url: '$GIT-URL']]])
+	    checkout([$class: 'GitSCM', branches: [[name: '$MY_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$REL_DIR']], submoduleCfg: [], userRemoteConfigs: [[url: '$GIT_URL1']]])
             //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
             }
         }
