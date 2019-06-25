@@ -8,6 +8,7 @@ pipeline{
     environment {
         def props = readProperties  file: '1.prpoperties'
         def Var1= "${props['name']}"
+	def clarity_version="${props['CLARITY_VERSION']}"
         }
     stages{
         stage("Set_Build_No")
@@ -15,7 +16,7 @@ pipeline{
 		steps
 		{
             script {
-                currentBuild.displayName = "$Var1-smoke"
+                currentBuild.displayName = "$clarity_version-smoke"
             }
         }
     }
