@@ -7,7 +7,7 @@ pipeline{
     }
     environment {
         def props = readProperties  file: '1.prpoperties'
-        def Var1= props['name']
+        def Var1= "${props['name']}"
         }
     stages{
         stage('1'){
