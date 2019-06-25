@@ -10,6 +10,15 @@ pipeline{
         def Var1= "${props['name']}"
         }
     stages{
+        stage("Set_Build_No")
+	{
+		steps
+		{
+            script {
+                currentBuild.displayName = "$Var1-smoke"
+            }
+        }
+    }
         stage('1'){
             steps{
             echo $Var1
