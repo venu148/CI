@@ -5,15 +5,15 @@ pipeline{
             customWorkspace '/var/jenkins_workspace2'
         }
     }
-    environment{
+    environment {
         def props = readProperties  file: '1.prpoperties'
         def Var1= props['name']
-        echo $Var1
-    }
+        }
     stages{
         stage('1'){
             steps{
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
+            echo $Var1
+            //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
             }
         }
     }
