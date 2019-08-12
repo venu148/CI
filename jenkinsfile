@@ -85,21 +85,13 @@ triggers {
 		    			steps{
 				script {
 						dir('main11'){
-    checkout (changelog: true,
-    poll: false,
-    scm: [
-        $class: 'GitSCM',
-        branches: [[name: "M1"]],
-        browser: [$class: 'GitHub', repoUrl: "https://github.com/venu148/sprint1.git"],
-        doGenerateSubmoduleConfigurations: false,
-        extensions: [
-            [$class: 'CloneOption', depth: 0, noTags: false, reference: '', shallow: false, timeout: 90],
-        ],
-        submoduleCfg: [],
- 
-        userRemoteConfigs: [[url: "https://github.com/venu148/sprint1.git"]]
-]
-)					
+  //   checkout(changelog: true,
+    //                poll: true,
+      //              scm: [$class: "GitSCM",
+        //                  branches: [[name: "M1"]],
+          //                userRemoteConfigs: [[credentialsId: 'root',url: "https://github.com/venu148/sprint1.git"]]])
+//   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/M1']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'generic'], [$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: false], [$class: 'ChangelogToBranch', options: [compareRemote: 'origin', compareTarget: comp_target]]], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/sprint1.git']]]
+   //checkout(changelog:false, poll:false, [$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 0, noTags: false, reference: '', shallow: false, timeout: 90],], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]])					
        //checkout(changelog: false, poll: false, [$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]])
 }
 dir('tests11'){
@@ -120,6 +112,7 @@ dir('tests11'){
                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait']]],
                     targets: ['z_vg646039_cipipelinefix3'])
 		    */
+        checkout([$class: 'GitSCM', branches: [[name: '*/M1']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 0, honorRefspec: true, noTags: true, reference: '', shallow: false], [$class: 'PathRestriction', includedRegions: '__nothing__']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'admin', url: 'https://github.com/venu148/sprint1.git', poll:false]]])		    
 		    echo "kk"
 }
 }
