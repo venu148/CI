@@ -91,7 +91,7 @@ triggers {
 			steps{
 				script {
 				bat '''
-				timeout 260 /nobreak
+				ping localhost -n 260
 				'''
 				
 					}
