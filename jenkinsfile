@@ -1,34 +1,123 @@
-pipeline{
-    agent{
-        node{
-            label 'slave_node'
-            customWorkspace '/var/jenkins_workspace2'
-        }
+import hudson.model.*
+label_check = hostNames('slave_node1')
+def requiredNodes = label_check
+for (node in requiredNodes) 
+{
+      println "Searching for t $node";
+      def slave = Hudson.instance.slaves.find({it.name == node});
+      if (slave != null)
+       {
+        computer = slave.getComputer();
+        if (computer.isOffline())
+         {
+           println "Error! $node is offline.";
+           if(label_check[-1]=="$node"){
+               println "Error! $node is OFFLINE.";
+               currentBuild.result = 'FAILURE';
+               emailext ( attachLog: true,
+		to: "team-ppm-clarity-scrum-missioncon1trol.pdl@broadcom.com",
+		body: 'all NODES are Offline  More info at: "$BUILD_URL"', mimeType: 'text/html',
+		subject: "Jenkins Builds ${currentBuild.currentResult}: Job ${env.JOB_NAME}")
+           }
+          else{
+              continue;
+          }
+         }
+         else 
+         {
+           println "OK: $node is online";
+           if(computer.isAcceptingTasks())
+           {
+             break;
+           }
+         }
+       }
+       else 
+       {
+         println "Slave $node not found!"; 
+       }
+     }
+
+def hostNames(label) {
+ def nodes = []
+ jenkins.model.Jenkins.instance.computers.each { c ->
+   if (c.node.labelString.contains(label)) {
+     nodes.add(c.node.selfLabel.name)
+   }
+ }
+ return nodes
+}
+
+pipeline {
+    agent { 
+    node {
+    label "slave_node1"
+    customWorkspace "/var/test1"
     }
-    environment {
-        def props = readProperties  file: '/var/1.prpoperties'
-        def Var1= "${props['name']}"
-	def clarity_version="${props['CLARITY_VERSION']}"
-	def MY_BRANCH="${props['MY-BRANCH']}"
-	def REL_DIR="${props['REL-DIR']}"
-	def GIT_URL="https://github.com/gabrielf/maven-samples.git"
-        }
-    stages{
-        stage("Set_Build_No")
-	{
-		steps
-		{
-            script {
-                currentBuild.displayName = "$clarity_version..$BUILD_NUMBER-smoke"
-            }
-        }
     }
-        stage('1'){
-            steps{
-            echo "$Var1"
-	    checkout([$class: 'GitSCM', branches: [[name: '$MY_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$REL_DIR']], submoduleCfg: [], userRemoteConfigs: [[url: '$GIT_URL']]])
-            //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/var/my_space']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/venu148/jenkins2--spring-boot.git']]])
-            }
-        }
+ parameters {
+    string(defaultValue: '15.7.0', description: 'Current Release', name: 'release')
+    string(defaultValue: 'localization', description: 'Build Type', name: 'build_type')
+//    string(defaultValue: 'i18n-build-167', description: 'Agent Name', name: 'agent')
+    string(defaultValue: 'z_vg646039_dev', description: 'Branch Name', name: 'branch')
+    string(defaultValue: '${release}.${BUILD_NUMBER}', description: ' ', name: 'clarity_version')
+  }
+
+ options{
+    buildDiscarder(logRotator(numToKeepStr:'4'))
+    skipDefaultCheckout()
+    timeout(time: 2, unit: 'HOURS')
+	// parallelsAlwaysFailFast()
+ 	// disableResume()
+	//checkoutToSubdirectory('${env.GIT_relative_target_dir}')
+    //overrideIndexTriggers(true)
+    //ansiColor('vga')
+    timestamps ()
+    quietPeriod(10)
+    retry(1)
+}
+triggers {
+        pollSCM 'H/3 * * * *'
     }
+    stages {
+	  stage('Checkout')  
+  { 
+		    			steps{
+				script {
+						dir('main11'){
+       checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]])
+}
+dir('tests11'){
+    //checkout resolveScm(source: git('https://github.gwd.broadcom.net/ESD/PPM.git'), targets: [BRANCH_NAME,'z_vg646039_cipipelinefix4'])
+   // resolveScm source: [$class: 'https://github.gwd.broadcom.net/ESD/PPM.git', credentialsId: 'kv030546', id: '_', remote: '', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait']]], targets: [BRANCH_NAME,'z_vg646039_cipipelinefix4']
+  //resolveScm source: checkout(changelog: false, poll: false, [$class: 'GitSCM', branches: [[name: 'z_vg646039_cipipelinefix3']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id', url: 'https://github.gwd.broadcom.net/ESD/PPM.git']]])
+  //checkout(changelog:false, poll:false, [$class: 'GitSCM', branches: [[name: 'z_vg646039_cipipelinefix3']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.gwd.broadcom.net/ESD/PPM.git']]]) 
+ checkout([$class: 'GitSCM',
+          branches: [[name: 'M1']],
+          userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/CI.git']],
+	  credentialsId: 'kv030546',
+          changelog: false,
+          poll: false])
+ /*checkout resolveScm(source: [$class: 'GitSCMSource',
+                             credentialsId: 'kv030546',
+                             id: '_',
+                             remote: 'https://github.gwd.broadcom.net/ESD/PPM.git',
+                             traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait']]],
+                    targets: ['z_vg646039_cipipelinefix3'])
+		    */
+}
+}
+}
+}	
+		stage('LOCALIZATIONBUILDTARGET1'){
+			steps{
+				script {
+				bat '''
+				ping localhost -n 140
+				ping localhost -n 130
+				'''
+					}
+				}
+			}
+			}
 }
