@@ -115,7 +115,7 @@ dir('tests11'){
         checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: '__nothing__']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'admin', url: 'https://github.com/venu148/sprint1.git']]])		    
 		    echo "kk"
 		    */
-		    checkout([$class: 'GitSCM', branches: [[name: '*/M1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '445f348e-b522-41e9-a9e4-db9cd2048aa1', url: 'https://github.com/venu148/sprint1.git']]])
+		    checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '445f348e-b522-41e9-a9e4-db9cd2048aa1', url: 'https://github.com/venu148/sprint1.git']]])
 }
 }
 }
