@@ -85,20 +85,20 @@ triggers {
 		    			steps{
 				script {
 						dir('main11'){
-       checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]])
+       checkout([$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git',poll: false]]])
 }
 dir('tests11'){
     //checkout resolveScm(source: git('https://github.gwd.broadcom.net/ESD/PPM.git'), targets: [BRANCH_NAME,'z_vg646039_cipipelinefix4'])
    // resolveScm source: [$class: 'https://github.gwd.broadcom.net/ESD/PPM.git', credentialsId: 'kv030546', id: '_', remote: '', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait']]], targets: [BRANCH_NAME,'z_vg646039_cipipelinefix4']
   //resolveScm source: checkout(changelog: false, poll: false, [$class: 'GitSCM', branches: [[name: 'z_vg646039_cipipelinefix3']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id', url: 'https://github.gwd.broadcom.net/ESD/PPM.git']]])
   //checkout(changelog:false, poll:false, [$class: 'GitSCM', branches: [[name: 'z_vg646039_cipipelinefix3']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.gwd.broadcom.net/ESD/PPM.git']]]) 
- checkout([$class: 'GitSCM',
+/* checkout([$class: 'GitSCM',
           branches: [[name: 'M1']],
           userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/CI.git']],
 	  credentialsId: 'kv030546',
           changelog: false,
           poll: false])
- /*checkout resolveScm(source: [$class: 'GitSCMSource',
+ checkout resolveScm(source: [$class: 'GitSCMSource',
                              credentialsId: 'kv030546',
                              id: '_',
                              remote: 'https://github.gwd.broadcom.net/ESD/PPM.git',
