@@ -52,7 +52,7 @@ pipeline {
     agent { 
     node {
     label "clarity-trunk-ci-ora-Pipeline"
-    customWorkspace "/var/test1"
+    customWorkspace "C:\Users\Administrator\Documents\test1"
     }
     }
  parameters {
@@ -90,7 +90,9 @@ triggers {
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
 				script {
-				sh 'sleep 250'
+				bat '''
+				sleep 260
+				'''
 				
 					}
 				}
