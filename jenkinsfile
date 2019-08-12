@@ -112,7 +112,7 @@ dir('tests11'){
                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait']]],
                     targets: ['z_vg646039_cipipelinefix3'])
 		    */
-        checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[], [$class: 'PathRestriction', excludedRegions: '__nothing__']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'admin', url: 'https://github.com/venu148/sprint1.git']]])		    
+        checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', excludedRegions: '__nothing__']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'admin', url: 'https://github.com/venu148/sprint1.git']]])		    
 		    echo "kk"
 }
 }
