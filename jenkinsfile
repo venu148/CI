@@ -91,7 +91,7 @@ triggers {
 			steps{
 				script {
 				bat '''
-				sleep 260
+				timeout 260 /nobreak
 				'''
 				
 					}
