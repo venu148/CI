@@ -90,7 +90,7 @@ triggers {
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
 				script {
-				sh 'sleep 180'
+				sh 'sleep 250'
 				
 					}
 				}
