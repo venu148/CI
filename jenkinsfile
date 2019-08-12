@@ -52,7 +52,7 @@ pipeline {
     agent { 
     node {
     label "clarity-trunk-ci-ora-Pipeline"
-    customWorkspace "C:\Users\Administrator\Documents\test1"
+    customWorkspace "C://Users//Administrator//Documents//test1"
     }
     }
  parameters {
