@@ -112,9 +112,7 @@ dir('tests11'){
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
 				script {
-				bat '''
-				ping localhost -n 140
-				ping localhost -n 130
+				sleep 180
 				'''
 					}
 				}
