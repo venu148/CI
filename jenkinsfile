@@ -85,7 +85,7 @@ triggers {
 		    			steps{
 				script {
 						dir('main11'){
-       checkout([$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]], poll: false)
+       checkout(changelog: false, poll: false, [$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'kv030546', url: 'https://github.com/venu148/sprint1.git']]])
 }
 dir('tests11'){
     //checkout resolveScm(source: git('https://github.gwd.broadcom.net/ESD/PPM.git'), targets: [BRANCH_NAME,'z_vg646039_cipipelinefix4'])
