@@ -85,7 +85,6 @@ triggers {
 		    			steps{
 				script {
 						dir('main11'){
-	(
     checkout (changelog: true,
     poll: false,
     scm: [
