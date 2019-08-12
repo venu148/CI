@@ -89,7 +89,7 @@ triggers {
     poll: false,
     scm: [
         $class: 'GitSCM',
-        branches: [[name: M1]],
+        branches: [[name: "M1"]],
         browser: [$class: 'GitHub', repoUrl: "https://github.com/venu148/sprint1.git"],
         doGenerateSubmoduleConfigurations: false,
         extensions: [
