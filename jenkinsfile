@@ -10,7 +10,7 @@ for (node in requiredNodes)
         computer = slave.getComputer();
         if (computer.isOffline())
          {
-           println "Error! $node is offline.";
+           println "Error! $node is1 offline.";
            if(label_check[-1]=="$node"){
                println "Error! $node is OFFLINE.";
                currentBuild.result = 'FAILURE';
