@@ -91,6 +91,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfi
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
 				script {
+				checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PruneStaleBranch'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'C://Users//Administrator//Documents']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/CI.git']]]
 				sleep(260)
 				
 					}
