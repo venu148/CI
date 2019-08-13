@@ -86,7 +86,7 @@ triggers {
 		    			steps{
 					//checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
 //checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "C://Users//Administrator//Documents//74"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
-checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'refs/heads/M2', compareTarget: 'M2']], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'C://Users//Administrator//Documents//']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
+checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'M2', compareTarget: 'refs/heads/M2']], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'C://Users//Administrator//Documents//']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
 }
 }
 
