@@ -75,7 +75,7 @@ pipeline {
     timestamps ()
     quietPeriod(10)
     retry(1)
-    enableConcurrentBuilds()
+    //enableConcurrentBuilds()
 }
 triggers {
         pollSCM 'H/3 * * * *'
