@@ -85,7 +85,7 @@ triggers {
   { 
 		    			steps{
 					//checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
-checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'https://github.com/venu148/sprint1.git', compareTarget: 'M2']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
+checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/tmp'], [$class: 'ChangelogToBranch', options: [compareRemote: 'https://github.com/venu148/sprint1.git', compareTarget: 'M2']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
 }
 }
 
