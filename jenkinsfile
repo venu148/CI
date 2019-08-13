@@ -83,8 +83,8 @@ triggers {
 	  stage('Checkout')  
   { 
 		    			steps{
-					properties([pipelineTriggers([pollSCM('H/3 * * * *')])])
-						checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
+					//properties([pipelineTriggers([pollSCM('H/3 * * * *')])])
+					checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]],poll:true)
 
 }
 }	
