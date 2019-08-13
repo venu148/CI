@@ -1,5 +1,5 @@
 import hudson.model.*
-label_check = hostNames('slave_node1')
+label_check = hostNames('clarity-trunk-ci-ora-Pipeline')
 def requiredNodes = label_check
 for (node in requiredNodes) 
 {
@@ -51,8 +51,8 @@ def hostNames(label) {
 pipeline {
     agent { 
     node {
-    label "slave_node1"
-    customWorkspace "/var/test1"
+    label "clarity-trunk-ci-ora-Pipeline"
+    customWorkspace "C://Users//Administrator//Documents//test1"
     }
     }
  parameters {
@@ -91,7 +91,7 @@ triggers {
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
 				script {
-				sh 'sleep 260'
+				sleep(260)
 				
 					}
 				}
