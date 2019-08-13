@@ -90,7 +90,7 @@ checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigu
 
 		stage('LOCALIZATIONBUILDTARGET1'){
 			steps{
-			checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: 'M1']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PruneStaleBranch']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/CI.git']]]
+			checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PruneStaleBranch']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]]
 
 				script {
 								sleep(260)
