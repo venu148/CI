@@ -100,7 +100,7 @@ checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigu
 			stage('sleep'){
 			steps{
 			script {
-								sleep(360)
+								sleep(760)
 				
 					}
 					}
