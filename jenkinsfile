@@ -15,7 +15,7 @@ for (node in requiredNodes)
                println "Error! $node is OFFLINE.";
                currentBuild.result = 'FAILURE';
                emailext ( attachLog: true,
-		to: "team-ppm-clarity-scrum-missioncon1trol.pdl@broadcom.com",
+		to: "team-ppm-clarity-scrum-missioncon1trol.pdl1@broadcom.com",
 		body: 'all NODES are Offline  More info at: "$BUILD_URL"', mimeType: 'text/html',
 		subject: "Jenkins Builds ${currentBuild.currentResult}: Job ${env.JOB_NAME}")
            }
@@ -85,7 +85,7 @@ triggers {
   { 
 		    			steps{
 					//checkout([$class: 'GitSCM', branches: [[name: '*/M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PathRestriction', includedRegions: '']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
-checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '/tmp'], [$class: 'ChangelogToBranch', options: [compareRemote: 'https://github.com/venu148/sprint1.git', compareTarget: 'M2']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
+checkout([$class: 'GitSCM', branches: [[name: 'M2']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "C://Users//Administrator//Documents//$BUILD_NUMBER"], [$class: 'ChangelogToBranch', options: [compareRemote: 'https://github.com/venu148/sprint1.git', compareTarget: 'M2']]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'venu_id1', url: 'https://github.com/venu148/sprint1.git']]])
 }
 }
 
